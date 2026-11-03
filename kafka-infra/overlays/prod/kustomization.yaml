@@ -6,18 +6,18 @@ namespace: kafka-infra
 resources:
   - ../../base
 
-patches:
+#patches:
   # Use persistent storage in production
-  - patch: |-
-      - op: replace
-        path: /spec/kafka/storage
-        value:
-          type: persistent-claim
-          size: 50Gi
-          deleteClaim: false
-    target:
-      kind: Kafka
-      name: kafka-cluster
+  #- patch: |-
+      #- op: replace
+        #path: /spec/kafka/storage
+        #value:
+          #type: persistent-claim
+          #size: 50Gi
+          #deleteClaim: false
+    #target:
+      #kind: Kafka
+      #name: kafka-cluster
 
 commonLabels:
   environment: prod
