@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{NOMBRE}}
+  name: kafka-infra
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,10 +9,10 @@ spec:
         elements:
           - env: dev
             namespace: kafka-infra-dev
-            path: {{PATH_DEV}}
+            path: kafka-infra/overlays/dev
           - env: prod
             namespace: kafka-infra
-            path: {{PATH_PROD}}
+            path: kafka-infra/overlays/prod
   template:
     metadata:
       name: 'kafka-infra-{{env}}'
@@ -23,7 +23,7 @@ spec:
       project: default
       source:
         # Update this to your Git repository URL
-        repoURL: {{REPO_GIT}}
+        repoURL: https://github.com/ocp4labs/kafka.git
         targetRevision: main
         path: '{{path}}'
       destination:

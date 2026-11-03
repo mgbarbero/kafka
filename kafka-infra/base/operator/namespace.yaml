@@ -4,5 +4,5 @@ metadata:
   name: kafka-infra
   labels:
     app.kubernetes.io/part-of: kafka-infra
-    {{ETIQUETA_GITOPS}}
+    argocd.argoproj.io/managed-by: openshift-gitops
 

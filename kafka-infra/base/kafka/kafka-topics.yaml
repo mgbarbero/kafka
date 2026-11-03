@@ -6,8 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/part-of: kafka-infra
 spec:
-  partitions: {{PARTICIONES}}
-  replicas: {{REPLICAS}}
+  partitions: 3
+  replicas: 3
   config:
     retention.ms: 604800000
     cleanup.policy: delete
@@ -20,8 +20,8 @@ metadata:
   labels:
     app.kubernetes.io/part-of: kafka-infra
 spec:
-  partitions: {{PARTICIONES}}
-  replicas: {{REPLICAS}}
+  partitions: 1
+  replicas: 3
   config:
     cleanup.policy: compact
 ---
@@ -33,8 +33,8 @@ metadata:
   labels:
     app.kubernetes.io/part-of: kafka-infra
 spec:
-  partitions: {{PARTICIONES}}
-  replicas: {{REPLICAS}}
+  partitions: 5
+  replicas: 3
   config:
     cleanup.policy: compact
 
