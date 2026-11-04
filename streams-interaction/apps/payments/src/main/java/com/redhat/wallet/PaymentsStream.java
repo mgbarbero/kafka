@@ -19,7 +19,7 @@ public class PaymentsStream {
     private final Serde<String> keySerde = Serdes.String();
 
     // Serializer for message values
-    private final Serde<Integer> valueSerde = Serdes.Integer();
+    private final Serde<String> valueSerde = Serdes.String();
 
     @Produces
     public Topology buildTopology() {
