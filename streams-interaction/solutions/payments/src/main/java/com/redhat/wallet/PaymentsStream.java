@@ -19,17 +19,17 @@ public class PaymentsStream {
     private final Serde<String> keySerde = Serdes.String();
 
     // Serializer for message values
-    private final Serde<Integer> valueSerde = Serdes.Integer();
+    private final Serde<String> valueSerde = Serdes.String();
 
     @Produces
     public Topology buildTopology() {
         StreamsBuilder builder = new StreamsBuilder();
-        KStream<String, Integer> stream = builder.stream("payments", Consumed.with(keySerde, valueSerde));
+        KStream<String, String> stream = builder.stream("payments", Consumed.with(keySerde, valueSerde));
 
         stream.foreach((key, amount) -> System.out.println("Received payment: " + amount));
 
         stream
-            .filter((key, amount) -> amount > 1000)
+            .filter((key, amount) -> Integer.parseInt(amount) > 1000)
             .to("large-payments", Produced.with(keySerde, valueSerde));
 
         return builder.build();
