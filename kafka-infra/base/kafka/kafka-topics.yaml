@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: kafka-infra
 spec:
-  partitions: 3
+  partitions: 4
   replicas: 2
   config:
     retention.ms: 604800000
