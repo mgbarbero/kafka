@@ -9,11 +9,11 @@ spec:
   configStorageTopic: filewatch-connect-cluster-configs
   statusStorageTopic: filewatch-connect-cluster-status
   offsetStorageTopic: filewatch-connect-cluster-offsets
-  bootstrapServers: 'kafka-cluster-kafka-bootstrap:9092'
+  bootstrapServers: 'KAFKACLUSTER'
   build:
     output:
-      image: 'quay.io/marianogbarbero/ad482-filewatch-connect-cluster:latest'
-      pushSecret: marianogbarbero-pull-secret
+      image: 'TU_IMAGEN'
+      pushSecret: TU_PULL_SECRET
       type: docker
     plugins:
       - artifacts:
