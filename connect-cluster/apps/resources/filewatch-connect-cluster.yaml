@@ -5,7 +5,7 @@ metadata:
     strimzi.io/use-connector-resources: 'true'
   name: kafka-cluster
 spec:
-  groupId:
+  groupId: kafka-cluster
   configStorageTopic: filewatch-connect-cluster-configs
   statusStorageTopic: filewatch-connect-cluster-status
   offsetStorageTopic: filewatch-connect-cluster-offsets
