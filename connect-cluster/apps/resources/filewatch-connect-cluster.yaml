@@ -1,15 +1,19 @@
-apiVersion: kafka.strimzi.io/v1beta2
+apiVersion: kafka.strimzi.io/v1
 kind: KafkaConnect
 metadata:
   annotations:
     strimzi.io/use-connector-resources: 'true'
-  name: filewatch-connect-cluster
+  name: kafka-cluster
 spec:
-  bootstrapServers: 'my-cluster-kafka-bootstrap:9092'
+  groupId:
+  configStorageTopic: filewatch-connect-cluster-configs
+  statusStorageTopic: filewatch-connect-cluster-status
+  offsetStorageTopic: filewatch-connect-cluster-offsets
+  bootstrapServers: 'kafka-cluster-kafka-bootstrap:9092'
   build:
     output:
-      image: 'quay.io/YOUR_QUAY_USERNAME/ad482-filewatch-connect-cluster:latest'
-      pushSecret: filewatch-connect-cluster-push-secret
+      image: 'quay.io/marianogbarbero/ad482-filewatch-connect-cluster:latest'
+      pushSecret: marianogbarbero-pull-secret
       type: docker
     plugins:
       - artifacts:
@@ -27,4 +31,4 @@ spec:
     offset.storage.replication.factor: 1
     status.storage.replication.factor: 1
   replicas: 1
-  version: 2.8.0
+  version: 4.2.0
