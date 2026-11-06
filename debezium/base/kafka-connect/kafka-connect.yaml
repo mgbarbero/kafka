@@ -38,7 +38,7 @@ spec:
       - name: debezium-mysql-connector
         artifacts:
           - type: zip
-            url: : https://maven.repository.redhat.com/ga/io/debezium/debezium-connector-mysql/3.2.5.Final-redhat-00001/debezium-connector-mysql-3.2.5.Final-redhat-00001-plugin.zip
+            url: https://maven.repository.redhat.com/ga/io/debezium/debezium-connector-mysql/3.2.5.Final-redhat-00001/debezium-connector-mysql-3.2.5.Final-redhat-00001-plugin.zip
       - name: debezium-jdbc-sink-connector
         artifacts:
           - type: zip
