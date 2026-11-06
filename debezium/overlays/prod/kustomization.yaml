@@ -21,22 +21,22 @@ patches:
       name: cdc-cluster
 
   # Increase resources for production
-  - patch: |-
-      - op: replace
-        path: /spec/kafka/resources/requests/memory
-        value: 2Gi
-      - op: replace
-        path: /spec/kafka/resources/limits/memory
-        value: 4Gi
-      - op: replace
-        path: /spec/kafka/resources/requests/cpu
-        value: 1000m
-      - op: replace
-        path: /spec/kafka/resources/limits/cpu
-        value: 2000m
-    target:
-      kind: Kafka
-      name: cdc-cluster
+  #- patch: |-
+      #- op: replace
+        #path: /spec/kafka/resources/requests/memory
+        #value: 2Gi
+      #- op: replace
+        #path: /spec/kafka/resources/limits/memory
+        #value: 4Gi
+      #- op: replace
+        #path: /spec/kafka/resources/requests/cpu
+        #value: 1000m
+      #- op: replace
+        #path: /spec/kafka/resources/limits/cpu
+        #value: 2000m
+    #target:
+      #kind: Kafka
+      #name: cdc-cluster
 
   # Production data generation rate (slower)
   - patch: |-
