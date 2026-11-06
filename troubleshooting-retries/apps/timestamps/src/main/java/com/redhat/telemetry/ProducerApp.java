@@ -25,12 +25,12 @@ public class ProducerApp {
 
     public static Properties configureProperties() {
 
-        ClassroomConfig classroomConfig = getClassroomConfig();
+   //     ClassroomConfig classroomConfig = getClassroomConfig();
         Properties props = new Properties();
 
         props.put(
             ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-            classroomConfig.getBoostrapServer() + ":" + classroomConfig.getBootstrapPort()
+           "kafka-cluster-kafka-bootstrap-kafka-infra.apps.lab.example.com:443"
         );
         props.put(
             ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
@@ -43,7 +43,7 @@ public class ProducerApp {
         props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
         props.put(
             SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,
-            classroomConfig.getWorkspacePath() + "/truststore.jks"
+            "/home/student/truststore.jks"
         );
         props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "password");
         props.put(ProducerConfig.ACKS_CONFIG, "all");
@@ -90,16 +90,6 @@ public class ProducerApp {
         producer.close();
     }
 
-    private static ClassroomConfig getClassroomConfig() {
-        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        try {
-            return objectMapper.readValue(
-                    new File(System.getProperty("user.home") + "/.grading/ad482-workspace.json"),
-                    ClassroomConfig.class);
-        } catch (IOException e) {
-            logger.error("Make sure to run 'lab start eda-setup' in your workspace directory", e);
-            return null;
-        }
-    }
+  
 
 }
