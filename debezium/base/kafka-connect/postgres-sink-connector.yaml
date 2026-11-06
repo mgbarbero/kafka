@@ -18,6 +18,7 @@ spec:
     connection.url: "jdbc:postgresql://postgres:5432/inventory"
     connection.username: "postgres"
     connection.password: "postgres" # notsecret - demo value
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     
     # Insert mode - upsert to handle updates
     insert.mode: "upsert"
