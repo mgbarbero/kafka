@@ -12,7 +12,17 @@ spec:
   replicas: 1
   bootstrapServers: cdc-cluster-kafka-bootstrap:9092
   config:
-   {{CONFIG}}
+    group.id: cdc-connect-cluster
+    offset.storage.topic: connect-cluster-offsets
+    config.storage.topic: connect-cluster-configs
+    status.storage.topic: connect-cluster-status
+    config.storage.replication.factor: 3
+    offset.storage.replication.factor: 3
+    status.storage.replication.factor: 3
+    key.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter.schemas.enable: true
+    value.converter.schemas.enable: true
   resources:
     requests:
       memory: 1Gi
@@ -28,8 +38,8 @@ spec:
       - name: debezium-mysql-connector
         artifacts:
           - type: zip
-            url: {{MYSQL CONNECTOR}}
+            url: : https://maven.repository.redhat.com/ga/io/debezium/debezium-connector-mysql/3.2.5.Final-redhat-00001/debezium-connector-mysql-3.2.5.Final-redhat-00001-plugin.zip
       - name: debezium-jdbc-sink-connector
         artifacts:
           - type: zip
-            url: {{JDBC CONNECTOR}}
+            url: https://maven.repository.redhat.com/ga/io/debezium/debezium-connector-jdbc/3.2.5.Final-redhat-00001/debezium-connector-jdbc-3.2.5.Final-redhat-00001-plugin.zip
