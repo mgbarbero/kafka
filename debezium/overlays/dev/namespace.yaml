@@ -5,4 +5,5 @@ metadata:
   labels:
     app.kubernetes.io/part-of: amq-streams-cdc-demo
     environment: dev
+    argocd.argoproj.io/managed-by: openshift-gitops
 
