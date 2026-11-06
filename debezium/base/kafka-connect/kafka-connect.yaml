@@ -11,11 +11,15 @@ spec:
   version: 4.2.0
   replicas: 1
   bootstrapServers: cdc-cluster-kafka-bootstrap:9092
+  groupId: cdc-connect-cluster
+  configStorageTopic: connect-cluster-configs
+  statusStorageTopic: connect-cluster-status
+  offsetStorageTopic: connect-cluster-offsets
   config:
-    group.id: cdc-connect-cluster
-    offset.storage.topic: connect-cluster-offsets
-    config.storage.topic: connect-cluster-configs
-    status.storage.topic: connect-cluster-status
+    #group.id: cdc-connect-cluster
+    #offset.storage.topic: connect-cluster-offsets
+    #config.storage.topic: connect-cluster-configs
+    #status.storage.topic: connect-cluster-status
     config.storage.replication.factor: 3
     offset.storage.replication.factor: 3
     status.storage.replication.factor: 3
